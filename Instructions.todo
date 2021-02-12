@@ -1,0 +1,27 @@
+-1. Create a Card class. @done
+-   a. Cards have a value 2,3,4,5,6,7,8,9,10,J,Q,K,A @done 
+-   b. Cards have a suit: spades, hearts, clubs, diamonds @done
+-   c. Create accessor methods @done
+-   d. toString method which returns something like 10 of Hearts @done
+-2. Create a Deck class @done
+-   a. Default method makes an array of cards. @done
+-   b. There is a shuffle method, which shuffles them around in random order @done
+-   c. There is a method for dealCard, which takes the top card of the deck and makes the deck one size smaller. If the deck is empty it'll return null. @done
+-   d. There is a method that returns the size of the deck. @done
+-   e. There is a toString method, which prints off all the cards - this is to test that there are the right cards before and after the shuffle. It won't be used in the real game. @done
+-3. Create a Hand class. @done
+-   a. It has an array of cards. @done
+-   b. The default constructor makes 2 null locations. @done
+-   c. A method called addCard, given a card as a parameter, it'll add it to the next null location. If there are no null locations, it'll increase the size of the array and add it there. @done
+-   d. A toString method, returns all the cards ex. 9 of spades, 2 of diamonds, J of clubs. @done
+-   e. A compareTo will give another Hand as a parameter, and return: @done
+-      0 if the cards have the same value @done
+-      -1 if this cards are worse than the other cards @done
+-      1 if this cards are better than the other cards@done
+-      ranking:@done
+-         High Card: A,4  beats K,Q @done
+-         Pair: 2,2 beats A,K.     8,8 beats 7,7 @done
+-4. Create a game that deals you two cards, and a computer 2 cards @done
+-   a. Who ever gets the higher cards wins a point.@done
+-   b. Use scanner to ask if they are ready for the next hand or quit.@done
+-
