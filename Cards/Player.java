@@ -30,6 +30,7 @@ public class Player {
         for (Card card : hand) {
             if (highCardInt < card.getValueInt()) {
                 tempCard = card;
+                highCardInt = card.getValueInt();
             }
         }
         return tempCard;
@@ -49,14 +50,8 @@ public class Player {
     }
 
     public int compareTo(Player opponent) {
-        if ((opponent.isPair() && isPair()) ^ (!opponent.isPair() && !isPair())) {
-            if (opponent.maxCard().getValueInt() > maxCard().getValueInt()) {
-                return -1;
-            } else if (opponent.maxCard().getValueInt() == maxCard().getValueInt()) {
-                return 0;
-            } else {
-                return 1;
-            }
+        if (!(opponent.isPair() ^ isPair())) {
+            return (int) Math.signum(maxCard().getValueInt() - opponent.maxCard().getValueInt());
         } else if (opponent.isPair()) {
             return -1;
         } else {
