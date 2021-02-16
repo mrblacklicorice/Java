@@ -1,3 +1,5 @@
+package Cards;
+
 public class Player {
     private Card[] hand;
 
@@ -47,7 +49,7 @@ public class Player {
     }
 
     public int compareTo(Player opponent) {
-        if (opponent.isPair() && isPair()) {
+        if ((opponent.isPair() && isPair()) ^ (!opponent.isPair() && !isPair())) {
             if (opponent.maxCard().getValueInt() > maxCard().getValueInt()) {
                 return -1;
             } else if (opponent.maxCard().getValueInt() == maxCard().getValueInt()) {
@@ -55,20 +57,10 @@ public class Player {
             } else {
                 return 1;
             }
+        } else if (opponent.isPair()) {
+            return -1;
         } else {
-            if (opponent.isPair()) {
-                return -1;
-            } else if (isPair()) {
-                return 1;
-            } else {
-                if (opponent.maxCard().getValueInt() > maxCard().getValueInt()) {
-                    return -1;
-                } else if (opponent.maxCard().getValueInt() == maxCard().getValueInt()) {
-                    return 0;
-                } else {
-                    return 1;
-                }
-            }
+            return 1;
         }
     }
 }

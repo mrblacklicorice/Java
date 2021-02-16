@@ -1,3 +1,5 @@
+package Cards;
+
 import java.util.Scanner;
 
 class Main {
@@ -29,7 +31,7 @@ class Main {
                     wins_p1++;
                     System.out.println("You Won!");
                 } else if (p1.compareTo(p2) == -1) {
-                    wins_p2--;
+                    wins_p2++;
                     System.out.println("You Lost!");
                 } else {
                     System.out.println("It was a tie!");
@@ -46,6 +48,7 @@ class Main {
             System.out.println("Games played: " + games_played);
             System.out.println("Good Game!");
         }
+        System.out.println("Next Time!");
         inputs.close();
     }
 }
