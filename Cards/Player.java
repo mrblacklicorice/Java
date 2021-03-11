@@ -40,6 +40,10 @@ public class Player {
         return hand[0].getValueInt() == hand[1].getValueInt();
     }
 
+    public boolean isFlush() {
+        return hand[0].getSuitInt() == hand[1].getSuitInt();
+    }
+
     public String toString() {
         String result = "";
         for (int i = 0; i < hand.length; i++) {
@@ -50,8 +54,16 @@ public class Player {
     }
 
     public int compareTo(Player opponent) {
-        if (!(opponent.isPair() ^ isPair())) {
+        if ((opponent.isPair() && isPair())) {
             return (int) Math.signum(maxCard().getValueInt() - opponent.maxCard().getValueInt());
+        } else if ((!opponent.isPair() && !isPair())) {
+            if (!(opponent.isFlush() ^ isFlush())) {
+                return (int) Math.signum(maxCard().getValueInt() - opponent.maxCard().getValueInt());
+            } else if (opponent.isFlush()) {
+                return -1;
+            } else {
+                return 1;
+            }
         } else if (opponent.isPair()) {
             return -1;
         } else {

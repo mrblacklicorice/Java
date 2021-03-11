@@ -1,52 +1,42 @@
 package Cards;
 
+import java.util.ArrayList;
+
 public class Deck {
-    private Card[] deck = new Card[52];
+    private ArrayList<Card> deck = new ArrayList<Card>();
 
     public Deck() {
-        for (int i = 0; i < deck.length; i++) {
-            deck[i] = new Card(i);
+        for (int i = 0; i < 52; i++) {
+            deck.add(new Card(i));
         }
     }
 
+    public int length() {
+        return deck.size();
+    }
+
     public String toString() {
-        if (length() == 0)
-            return "";
         String result = "";
-        for (int i = 0; i < deck.length; i++) {
-            if (deck[i] != null)
-                result += deck[i] + ", ";
+        for (int i = 0; i < deck.size(); i++) {
+            result += deck.get(i) + ", ";
         }
         return result.substring(0, result.length() - 2);
     }
 
-    public int length() {
-        int count = 0;
-        for (int i = 0; i < deck.length; i++) {
-            if (deck[i] != null)
-                count++;
-        }
-        return count;
-    }
-
     public void shuffle() {
-        int curr = length() - 1;
+        int curr = deck.size() - 1;
         int rand = (int) (Math.random() * (curr + 1));
         Card temp;
         while (curr > 0) {
-            temp = deck[curr];
-            deck[curr] = deck[rand];
-            deck[rand] = temp;
+            temp = deck.get(curr);
+            deck.set(curr, deck.get(rand));
+            deck.set(rand, temp);
             curr--;
             rand = (int) (Math.random() * (curr + 1));
         }
     }
 
     public Card dealCard() {
-        if (length() == 0)
-            return null;
-        Card temp = deck[length() - 1];
-        deck[length() - 1] = null;
-        return temp;
+        return deck.remove(deck.size() - 1);
     }
 }
